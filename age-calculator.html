@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>age calculator</title>
+  <style>
+    .box{
+      height: 300px;
+      width: 300px;
+      border: 1px black solid;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-self: center;
+      margin-top: 150px;
+    }
+    #dob{
+      margin: 40px 5px 10px 5px;
+      width: 200px;
+      font-size: 17px;
+    }
+    #calc{
+       font-size: 17px;
+      margin: 15px;
+    }
+    #age{
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>
+      Age Calculator
+    </h1>
+    <input type="date" id="dob">
+    <button onclick="myAge()" id="calc">Calculate age</button>
+    <p id="age"></p>
+    <script>
+      function myAge(){
+        let date= new Date(document.getElementById("dob").value);
+        let today=new Date;
+        let age= today.getFullYear()-date.getFullYear();
+        let month=today.getMonth()-date.getMonth();
+         if (
+    month < 0 ||
+    (month === 0 && today.getDate() < date.getDate())
+  ) {
+    age--;
+  }
+  document.getElementById("age").innerHTML="your age is "+age +" years and "+month +"months old"
+      }
+    </script>
+  </div>
+</body>
+</html>
